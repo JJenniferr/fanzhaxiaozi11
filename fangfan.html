@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>防范方法</title>
+<style>
+body{
+	background:url("res/bg1.png") center no-repeat;
+	background-size: 100% auto;
+	background-attachment: fixed;
+}
+.divCss1{
+	margin-bottom: 10px;
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	width: 400px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.85);
+	border-radius: 1rem;
+}
+	
+.divCss2{
+	margin-bottom: 10px;
+	position: absolute;
+	left: 20%;
+	top: 39%;
+	width: 400px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.85);
+	border-radius: 1rem;
+}
+.divCss3{
+	margin-bottom: 10px;
+	position: absolute;
+	left: 20%;
+	top: 60%;
+	width: 400px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.85);
+	border-radius: 1rem;
+}
+.button{
+	position: absolute;
+	left: 40%;
+	top: 80%;
+}
+.olCss{
+	padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+	margin-left: 40px;
+}
+.inputClass {
+	float:left;
+	margin-left: -50px;
+}
+.liRight {
+	
+}
+.image1{
+				  width: 7%;
+				  position: absolute;
+				  left: 3%;
+				  top: 85%;
+			}
+.image2{
+				  width: 7%;
+				  position: absolute;
+				  left: 12%;
+				  top: 85%;
+			}
+</style>
+</head>
+<body>
+<!-- 
+type默认为数字,其他类型有英文字母A/a,罗马字母I/i,
+start可以设置起始标记 下标从1开始 
+-->
+<form>
+	<div class="divCss1">
+	1.小A在淘宝购物，商家发了一条非淘宝的商品链接让其拍下，小A应该怎么做？（）
+		<ol type="A" start="" class="olCss" name="single" >
+			<input class="inputClass" type="radio" name="place1" value="A" /><li class="liRight">直接付款</li>
+			<input class="inputClass" type="radio" name="place1" value="B" /><li class="liRight">报警</li>
+		</ol>
+	</div>
+	
+	<div class="divCss2">
+	2.“您好，由于快递员疏忽，您的快递在运送途中丢失，我们将赔偿你2倍损失，点击以下链接填写个人信息。”接到类似电话，你应该怎么做？()
+		<ol type="A" start="" class="olCss" name="single" >
+			<input class="inputClass" type="radio" name="place2" value="A"  /><li class="liRight">联系官方客服查询快递信息</li>
+			<input class="inputClass" type="radio" name="place2" value="B" /><li class="liRight">点击链接，填写信息</li>
+		</ol>
+	</div>
+	<div class="divCss3">
+	3.小黄网络支付时，突然跳出不明弹窗要求验证本人身份信息,小黄应该怎么做？()
+		<ol type="A" start="" class="olCss" name="multi" >
+			<input class="inputClass" type="checkbox" name="place3" value="A" /><li class="liRight">拒绝填写</li>
+			<input class="inputClass" type="checkbox" name="place3" value="B" /><li class="liRight">报警咨询</li>
+			<input class="inputClass" type="checkbox" name="place3" value="C" /><li class="liRight">继续填写</li>
+		</ol>
+	</div>
+	<input type="button" class="button" value="提交答案" onclick="sendMsg()" />
+</form>
+<div>
+			  <a href="weiqvan.html" ><img class="image1" src="res/fanhui.png"/></ a>
+			  <a href="jieshu.html" ><img class="image2" src="res/xiayibu.png"/></ a>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+function sendMsg(){
+	//题目数
+	var singleSize = $("[name='single']").length;
+	var multiSize = $("[name='multi']").length;
+	//答案数组
+	var answerArr = new Array(singleSize+multiSize);
+	//单选答案
+	$("[name='single']").each(function(index){
+		//放入答案
+		var answer = $("input[name='place"+(index+1)+"']:checked").val();
+		answerArr[index] = answer;
+	})
+	//多选答案
+	$("[name='multi']").each(function(index){
+		//拼接多选答案
+		var multiAnswer = "";
+		$("input[name='place"+(index+singleSize+1)+"']:checked").each(function(){
+			if ("checked" == $(this).attr("checked")) {
+				//拼接答案
+				multiAnswer = multiAnswer+$(this).attr('value');
+			}
+		})
+		//放入答案
+		answerArr[index+singleSize] = multiAnswer;
+	})
+	//在调试模式下的console中查看输出
+	console.log(answerArr);
+	//发送答案到服务器
+}
+</script>
+</body>
+</html>

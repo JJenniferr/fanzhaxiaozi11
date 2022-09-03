@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>冒充淘宝客服</title>
+		<style type="text/css">
+			body{
+			  background:url("res/maochong.png") center no-repeat;
+			  background-size: 100% auto;
+			  background-attachment: fixed;
+			}
+			.image1{
+				  width: 7%;
+				  position: absolute;
+				  left: 3%;
+				  top: 85%;
+			}
+			.image2{
+				  width: 7%;
+				  position: absolute;
+				  left: 12%;
+				  top: 85%;
+			}
+			.fish-click{
+				position: absolute;
+				right: 10%;
+				top: 20%;
+				width: 22rem;
+				height: 10rem;
+			}
+			.select-toast{
+			    position: absolute;
+			    right: 10%;
+			    top: 20%;
+			    width: 20rem;
+				padding: 1rem;
+				line-height: 2rem;
+				color: black;
+				background-color: rgba(255,255,255,0.85);
+				border-radius: 1rem;
+				opacity: 0;
+			}
+			.select-toast:before{
+				content: "";
+				width: 0px;
+				height: 0px;
+				border-width: 0.2rem;
+			    border-top: 10px solid rgba(255,255,255,0.85);
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				position: absolute;
+				top: 100%;
+				left: 80%;
+			}
+		    
+			.select-toast.toastAni{
+			     -webkit-animation: toast 4s;
+			     animation: toast 4s;
+			}
+			@-webkit-keyframes toast {  
+			    8%{
+			        opacity: 0.8;
+			        -webkit-transform: scale(0.8);
+			        transform: scale(0.8);
+			    }
+			    16%{
+			        opacity: 1;
+			        -webkit-transform: scale(1.1);
+			        transform: scale(1.1);
+			    }
+			    24%{
+			        opacity: 1;
+			        -webkit-transform: scale(0.95);
+			        transform: scale(0.95);
+			    }
+			    32%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    82.5%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    100%{
+			        opacity: 0;
+			    }
+			}
+			@keyframes toast {
+			    8%{
+			        opacity: 0.8;
+			        -webkit-transform: scale(0.8);
+			        transform: scale(0.8);
+			    }
+			    16%{
+			        opacity: 1;
+			        -webkit-transform: scale(1.1);
+			        transform: scale(1.1);
+			    }
+			    24%{
+			        opacity: 1;
+			        -webkit-transform: scale(0.95);
+			        transform: scale(0.95);
+			    }
+			    32%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    82.5%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    100%{
+			        opacity: 0;
+			    }
+			}
+			.select-toast1{
+			    position: absolute;
+			    right: 40%;
+			    top: 25%;
+			    width: 10rem;
+				padding: 1rem;
+				line-height: 2rem;
+				color: black;
+				background-color: rgba(255,255,255,0.85);
+				border-radius: 1rem;
+				opacity: 0;
+				
+			}
+			.select-toast1:before{
+				content: "";
+				width: 0px;
+				height: 0px;
+				border-width: 0.2rem;
+			    border-top: 10px solid rgba(255,255,255,0.85);
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				position: absolute;
+				top: 100%;
+				left: 80%;
+			}
+			
+			.select-toast1.toast1Ani{
+				-webkit-transition-delay: 2s;
+			    -webkit-animation: toast1 4s;
+			    animation: toast1 4s;
+			}
+			@-webkit-keyframes toast1 {  
+			    8%{
+			        opacity: 0.8;
+			        -webkit-transform: scale(0.8);
+			        transform: scale(0.8);
+			    }
+			    16%{
+			        opacity: 1;
+			        -webkit-transform: scale(1.1);
+			        transform: scale(1.1);
+			    }
+			    24%{
+			        opacity: 1;
+			        -webkit-transform: scale(0.95);
+			        transform: scale(0.95);
+			    }
+			    32%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    82.5%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    100%{
+			        opacity: 0;
+			    }
+			}
+			@keyframes toast1 {
+			    8%{
+			        opacity: 0.8;
+			        -webkit-transform: scale(0.8);
+			        transform: scale(0.8);
+			    }
+			    16%{
+			        opacity: 1;
+			        -webkit-transform: scale(1.1);
+			        transform: scale(1.1);
+			    }
+			    24%{
+			        opacity: 1;
+			        -webkit-transform: scale(0.95);
+			        transform: scale(0.95);
+			    }
+			    32%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    82.5%{
+			        opacity: 1;
+			        -webkit-transform: scale(1);
+			        transform: scale(1);
+			    }
+			    100%{
+			        opacity: 0;
+			    }
+			}
+		</style>
+		<script type="text/javascript" src="https://www.php.cn/static/js/jquery.min.js"> </script>
+	</head>
+	<body>
+		<p class="select-toast" id="select-toast">由于我们的系统出了问题，您在我们店铺购买的商品没办法发货，这边会把货退还给您，需要您在网上进行退款操作。</p>
+        <p class="select-toast1" id="select-toast1">那我应该怎么做呢？</p>
+		<div class="fish-click" id="fish-click" onclick=""></div>
+		<div>
+			  <a href="maochong.html"  ><img class="image1" src="res/fanhui.png"/></ a>
+			  <a href="maochongxuanze.html" ><img class="image2" src="res/xiayibu.png"/></ a>
+		</div>
+	</body>
+	<script type="text/javascript">
+	var toastText = [
+	   "由于我们的系统出了问题，您在我们店铺购买的商品没办法发货，这边会把货退还给您，需要您在网上进行退款操作。",
+	 ]
+	var fishAlert;
+	function textShow(aniTime,spaceTime){
+	    clearInterval(fishAlert);
+	    $("#fish-click").off("tap");
+	    $("#select-toast").html(toastText).addClass("toastAni");
+	    setTimeout(function(){
+	        $("#select-toast").removeClass("toastAni");
+	        $("#fish-click").off("tap").on("tap",function(){
+	            textShow(4000,6000);
+	        })
+	        fishAlert = setInterval(function(){
+	            $("#select-toast").html(toastText).addClass("toastAni");
+	            setTimeout(function(){
+	                $("#select-toast").removeClass("toastAni");
+	            },aniTime)
+	        },spaceTime);
+	    },aniTime);
+	}
+	$(document).ready(function(){
+	    textShow(4000,6000);
+	})
+	
+	var toast1Text = [
+	   "那我应该怎么做呢？",
+	 ]
+	var fishAlert1;
+	function textShow1(aniTime,spaceTime){
+	    clearInterval(fishAlert1);
+	    $("#fish-click").off("tap");
+	    $("#select-toast1").html(toast1Text).addClass("toast1Ani");
+	    setTimeout(function(){
+	        $("#select-toast1").removeClass("toast1Ani");
+	        $("#fish-click").off("tap").on("tap",function(){
+	            textShow1(4000,6000);
+	        })
+	        fishAlert1 = setInterval(function(){
+	            $("#select-toast1").html(toast1Text).addClass("toast1Ani");
+	            setTimeout(function(){
+	                $("#select-toast1").removeClass("toast1Ani");
+	            },aniTime)
+	        },spaceTime);
+	    },aniTime);
+	}
+	$(document).ready(function(){
+	    textShow1(4000,6000);
+	})
+	</script>
+</</html>
